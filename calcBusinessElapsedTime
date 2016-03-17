@@ -1,0 +1,52 @@
+if(typeof window == 'undefined')  
+   runBusRuleCode();  
+  
+  
+function runBusRuleCode(){  
+var durationCalc =  new IncidentDurationCalculator();  
+durationCalc.calculateBusinessDuration(current);  
+  
+  
+}  
+/* 
+Variables required 
+ 
+ 
+current.u_schedule - The schedule you would like to follow for duration calculator we need to define this field in the form 
+current.time_zone - Time zone field to be added to form 
+*/  
+var IncidentDurationCalculator =  Class.create();  
+  
+IncidentDurationCalculator.prototype = {  
+  initialize : function() {  
+  this.nowGDT = new GlideDateTime();  
+  this.schedules = {};  
+  },  
+  // number of seconds contained within the schedule, between fromGDT and toGDT  
+  getScheduleDurationTime: function(fromGDT, toGDT, scheduleObject) {  
+  var ttime = scheduleObject.duration(fromGDT, toGDT);  
+  return (ttime.getNumericValue());  
+  },  
+  calculateBusinessDuration: function(current) {  
+  // Calculate the business field values (if needed)  
+  var busElapsedTimeMS;   
+  var tz ;  
+  if(JSUtil.nil(current.time_zone))  
+  tz = gs.getSysTimeZone() ;  
+  else   
+  tz =  current.time_zone;  
+  if (JSUtil.notNil(current.u_schedule) && JSUtil.notNil(tz) ) {  
+  schedule = new GlideSchedule(current.u_schedule, tz);  
+  var startGDT =  new GlideDateTime(current.sys_created_on);  
+  busElapsedTimeMS = this.getScheduleDurationTime(startGDT, this.nowGDT, schedule);  
+  businessElapsedTimeDisplay = new GlideDuration(busElapsedTimeMS).getDurationValue();  
+  }  
+  gs.print("Business Elapsed time" + businessElapsedTimeDisplay );  
+ current.u_business_elapsed_time = businessElapsedTimeDisplay;  
+ current.update();  
+  // Please change the bolded field name below accordingly for business elapsed time display  
+  
+  
+action.setRedirectURL(current);  
+  }  
+};  
