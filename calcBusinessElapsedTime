@@ -1,3 +1,5 @@
+More details of this request can be found at https://community.servicenow.com/message/899875
+
 if(typeof window == 'undefined')  
    runBusRuleCode();  
   
