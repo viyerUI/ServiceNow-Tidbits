@@ -1,15 +1,6 @@
 More details of this request can be found at https://community.servicenow.com/message/899875
 
-if(typeof window == 'undefined')  
-   runBusRuleCode();  
-  
-  
-function runBusRuleCode(){  
-var durationCalc =  new IncidentDurationCalculator();  
-durationCalc.calculateBusinessDuration(current);  
-  
-  
-}  
+
 /* 
 Variables required 
  
@@ -52,3 +43,14 @@ IncidentDurationCalculator.prototype = {
 action.setRedirectURL(current);  
   }  
 };  
+
+if(typeof window == 'undefined')  
+   runBusRuleCode();  
+  
+  
+function runBusRuleCode(){  
+var durationCalc =  new IncidentDurationCalculator();  
+durationCalc.calculateBusinessDuration(current);  
+  
+  
+}  
