@@ -1,0 +1,8 @@
+var gr =  new GlideRecord('ecc_agent_capability_m2m');
+gr.addQuery("capability", "REST");
+gr.query();
+while(gr.next()) {
+	if(gr.agent.status == "Up") {
+	 gs.log("Available Mid Servers" + gr.agent.name);
+	}
+}
