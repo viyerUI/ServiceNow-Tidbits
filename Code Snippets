@@ -5,6 +5,8 @@ $j('[data-toggle="tooltip"]').each(function( index ) {
   $j(this).tooltip({html : true, placement: 'top', });
 })
 
+
+Code for rendering html instead of plain text within the more help section
 ##using jquery
 $j("div.sc-help-text" ).each(function(index) {  
 var html = $j(this).text();  
