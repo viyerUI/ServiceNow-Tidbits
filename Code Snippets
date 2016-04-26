@@ -4,3 +4,15 @@ $j('[data-toggle="tooltip"]').each(function( index ) {
   $j(this).removeData('bs.tooltip');
   $j(this).tooltip({html : true, placement: 'top', });
 })
+
+##using jquery
+$j("div.sc-help-text" ).each(function(index) {  
+var html = $j(this).text();  
+$j(this).html(html);   
+});  
+
+##Using Prototypejs framework
+$$("div.sc-help-text").each(function(item){  
+var textValue = item.innerText;  
+$(item).update(textValue);  
+}); 
