@@ -1,6 +1,6 @@
 ## Code to add HTML Tootlip to Catalog Variable 
 
 $j('[data-toggle="tooltip"]').each(function( index ) {
-$j(this).tooltip("destroy");
-$j(this).tooltip({html : true, placement: 'top', });
-});
+  $j(this).removeData('bs.tooltip');
+  $j(this).tooltip({html : true, placement: 'top', });
+})
