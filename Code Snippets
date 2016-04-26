@@ -1,9 +1,15 @@
 ## Code to add HTML Tootlip to Catalog Variable 
 
-$j('[data-toggle="tooltip"]').each(function( index ) {
-  $j(this).removeData('bs.tooltip');
-  $j(this).tooltip({html : true, placement: 'top', });
-})
+function onLoad() {
+	// plugin gets initialized later so it needs settimeout to ensure the script is applied later
+	window.setTimeout(function(){
+		$j('[data-toggle="tooltip"]').each(function( index ) {
+			$j(this).off('.tooltip').removeData('bs.tooltip');
+			
+			$j(this).tooltip({html : true, placement: 'top', });
+		});
+	}, 0);
+}
 
 
 Code for rendering html instead of plain text within the more help section
